@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ScalaSbtSettings">
+    <option name="linkedExternalProjectsSettings">
+      <SbtProjectSettings>
+        <option name="externalProjectPath" value="C:\cygwin64\home\nmrw48\gits\unicorn" />
+        <option name="useAutoImport" value="true" />
+      </SbtProjectSettings>
+    </option>
+  </component>
+</project>
