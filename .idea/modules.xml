@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea_modules/unicorn.iml" filepath="$PROJECT_DIR$/.idea_modules/unicorn.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/unicorn-build.iml" filepath="$PROJECT_DIR$/.idea/modules/unicorn-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea_modules/unicorn-build.iml" filepath="$PROJECT_DIR$/.idea_modules/unicorn-build.iml" />
     </modules>
   </component>
 </project>
