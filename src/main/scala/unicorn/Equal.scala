@@ -1,18 +1,19 @@
 package unicorn
-
+import unicorn.ADT._
 trait Equal[A]{
-  def equals(a: A, b: A): Boolean = a ==b
+  def equals(a: A, b: A): Boolean
 }
 
 object Equal{
   def apply[A: Equal] = implicitly[Equal[A]]
 
-  implicit def IntEqual = new Equal[Int]{
-    def equal(a: Int, b: Int): Boolean = a == b
+  def eqInstance[A](f: (A,A) => Boolean): Equal[A] = new Equal[A] {
+    def equals(a: A, b: A) = f(a,b)
   }
 
-  implicit def OptionEqual = new Equal[Option]{
-    def equal(a: Option, b: Option): Boolean = a == b
-  }
+  implicit def IntEqual = eqInstance[Int](_ == _)
+
+  implicit def OptionEqual = eqInstance[Option](_ == _)
+
 
 }

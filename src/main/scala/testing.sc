@@ -1,5 +1,1 @@
-import unicorn.Monad
-import unicorn.ADT.Id
-import unicorn.syntax.MonadSyntax._
-
-
+Some(1).flatMap(x => Some(2).map(y => y + x))
