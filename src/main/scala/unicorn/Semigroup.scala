@@ -15,5 +15,4 @@ object Semigroup{
 
   def StringSemiGroup = groupInstance[String](_+_)
 
-
 }

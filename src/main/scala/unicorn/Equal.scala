@@ -17,5 +17,4 @@ object Equal{
     def equals(a: Option[A], b: Option[A]) = implicitly[Equal[A]].equals(a.get,b.get)
   }
 
-
 }
