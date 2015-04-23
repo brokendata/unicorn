@@ -27,7 +27,12 @@ object Monoid{
       case (None, None) => None
     }
 
-    def zero: Option[A] = None 
+    def zero: Option[A] = None
+  }
+
+  implicit def EndoMonoid[A] = new Monoid[A => A]{
+    def append(f: A => A, g: A => A) = f andThen g
+    def zero = (a: A) => a
   }
 
 }
