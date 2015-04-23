@@ -1,1 +1,1 @@
-Some(1).flatMap(x => Some(2).map(y => y + x))
+None.get == None.get

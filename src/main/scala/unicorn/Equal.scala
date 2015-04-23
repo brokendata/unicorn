@@ -13,7 +13,9 @@ object Equal{
 
   implicit def IntEqual = eqInstance[Int](_ == _)
 
-  implicit def OptionEqual = eqInstance[Option](_ == _)
+  implicit def OptionEqual[A: Equal] = new Equal[Option[A]]{
+    def equals(a: Option[A], b: Option[A]) = implicitly[Equal[A]].equals(a.get,b.get)
+  }
 
 
 }
