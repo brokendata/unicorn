@@ -1,18 +1,18 @@
 package unicorn
 
-trait Semigroup[A]{
-  def append(a1: A, a2: A): A
+import simulacrum._
+
+@typeclass trait Semigroup[A] {
+  @op("|+|") def append(x: A, y: A): A
 }
 
 object Semigroup{
-  def apply[A: Semigroup] = implicitly[Semigroup[A]]
-
-  def groupInstance[A](f:(A,A) => A) = new Semigroup[A] {
-    def append(a1: A, a2: A) = f(a1,a2)
+  implicit def IntSemiGroup = new Semigroup[Int] {
+    def append(x: Int, y: Int) = x + y
   }
 
-  def IntSemiGroup = groupInstance[Int](_+_)
-
-  def StringSemiGroup = groupInstance[String](_+_)
-
+  implicit def Listsemigroup[A] = new Semigroup[List[A]]{
+    def append(x: List[A], y: List[A]) = x ++ y
+  }
 }
+

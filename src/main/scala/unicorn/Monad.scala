@@ -1,0 +1,5 @@
+package unicorn
+
+class Monad {
+
+}
