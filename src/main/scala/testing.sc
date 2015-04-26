@@ -1,5 +1,3 @@
-def mapper(sent: String): List[(String, Int)] =
-  sent.split("\\s"). map ((_,1)) toList
-
-
-def reducer(kv: List[(String, Int)]): Map[(String -> Int)]
+import unicorn.Monad._
+import unicorn.Monad
+def join[M[_]: Monad,A](mma: M[M[A]]): M[A] =
