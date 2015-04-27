@@ -18,7 +18,6 @@ import simulacrum._
   // *flattens*
   def join[A](mma: M[M[A]]): M[A] = flatMap(mma)(x => x)
 
-  def flatMapbyJoin[A,B](ma: M[A])(f: A => M[B]): M[B] =
 }
 
 object Monad {
