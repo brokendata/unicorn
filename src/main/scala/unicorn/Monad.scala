@@ -5,7 +5,7 @@ import simulacrum._
 @typeclass trait Monad[M[_]] extends Functor[M] {
   def flatMap[A, B](ma: M[A])(f: A => M[B]): M[B]
 
-  def unit[A](a: A): M[A]
+  def unit[A](a: => A): M[A]
 
   def map2[A, B, C](ma: M[A], mb: M[B])(f: (A, B) => C): M[C] =
     flatMap(ma)(a => map(mb)(b => f(a, b)))
@@ -24,7 +24,7 @@ object Monad {
   implicit def ListMonad: Monad[List] = new Monad[List] {
     def flatMap[A, B](la: List[A])(f: A => List[B]): List[B] = la flatMap f
 
-    def unit[A](a: A) = List(a)
+    def unit[A](a: => A) = List(a)
   }
 }
 
