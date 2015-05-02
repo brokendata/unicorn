@@ -29,11 +29,11 @@ object IO extends Monad[IO] {
   or, what about a function that reads a line, performs and action
   and then prints the line (IO Monads Compose):
 
-
+ */
   def add2: IO[Unit] = for {
     _ <- PrintLine("Enter a number that be added to 2")
     i <- ReadLine.map(_.toInt)
-    _ <- PrintLine(s"The number is ${i*2}")
+    _ <- PrintLine(s"The number is ${i+2}")
     } yield ()
-   */
+
 }
