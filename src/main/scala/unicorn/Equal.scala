@@ -6,7 +6,6 @@ trait Equal[A]{
 
 object Equal{
   def apply[A: Equal] = implicitly[Equal[A]]
-
   def eqInstance[A](f: (A,A) => Boolean): Equal[A] = new Equal[A] {
     def equals(a: A, b: A) = f(a,b)
   }

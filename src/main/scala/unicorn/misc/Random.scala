@@ -31,4 +31,42 @@ object RNG {
       val (i2,sc) = s2(sa)
       (f(i1,i2),sc)
   }
+
+  def sequence[A](fa: List[Rand[A]]): Rand[List[A]] = {
+    fa.foldRight(unit(List[A]()))((f,acc) => map2(f,acc)(_::_))
+  }
+
+  def flatMap[A,B](s1: Rand[A])(f: A => Rand[B]): Rand[B] = {
+    rng =>
+      val (i1,s2) = s1(rng)
+      f(i1)(s2)
+  }
+}
+
+object StateMonad{
+  case class State[S,A](run: S => (A,S)){
+    // to create an instance of Stat
+    def unit[A](a: A): State[S,A] = State(S => (a,S))
+    def map[B](f: A =>B): State[S,B] = {
+      State(s => {
+        val (a,s1)  = run(s)
+        (f(a),s)}
+        )
+    }
+    def flatMap[B](f: A => State[S,B]): State[S,B] = {
+      State(s => {
+        val (a,s1) = run(s)
+        f(a).run(s1)
+      })
+    }
+
+    def map2[B,C](sb: State[S,B])(f: (A,B) => C): State[S,C] = {
+      State(s=>{
+        val (a,s2) = run(s)
+        val (b,s3) = sb.run(s2)
+        (f(a,b),s3)
+      }
+      )
+    }
+  }
 }

@@ -13,3 +13,7 @@ libraryDependencies += "org.spire-math" %% "cats-std" % "0.1.0-SNAPSHOT"
 libraryDependencies += "org.spire-math" %% "cats-laws" % "0.1.0-SNAPSHOT"
 
 libraryDependencies += "org.scalaz" %% "scalaz-core" % "7.1.1"
+
+libraryDependencies += "org.scalaz" %% "scalaz-effect" % "7.1.0"
+
+libraryDependencies += "org.scala-lang.modules" %% "scala-async" % "0.9.1"
